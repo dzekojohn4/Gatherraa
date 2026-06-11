@@ -12,8 +12,8 @@ gathera-common = { workspace = true }
 ticket_contract = { workspace = true }
 escrow_contract = { workspace = true }
 multisig_wallet_contract = { workspace = true }
+serde_json = { workspace = true }
+rand = { workspace = true }
 
 [dev-dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }
-serde_json = { workspace = true }
-rand = { workspace = true }
