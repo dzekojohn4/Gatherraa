@@ -22,9 +22,10 @@ const eslintConfig = defineConfig([
   ]),
   {
     rules: {
-      // Downgrade to warnings during the cleanup phase — should be restored to error after cleanup
-      "no-console": "warn",
-      "@typescript-eslint/no-explicit-any": "warn",
+      // No console.* in production code — use the structured logger instead.
+      // Exceptions are handled via eslint-disable-next-line in logger.ts and story files.
+      "no-console": "error",
+      "@typescript-eslint/no-explicit-any": "error",
     },
   },
   // Allow console.* and any in test files, stories, and scripts
