@@ -1,4 +1,26 @@
 {
+  "name": "gatheraa",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "app/backend",
+    "app/frontend",
+    "app/image-service",
+    "contract",
+    "tests/integration"
+  ],
+  "scripts": {
+    "install": "npm install --workspaces",
+    "build": "npm run build --workspaces",
+    "format": "npm run format --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "test:backend": "npm --workspace app/backend test",
+    "test:frontend": "npm --workspace app/frontend lint",
+    "test:contract": "cd contract && cargo test --workspace --all-features",
+    "storybook": "npm --workspace app/frontend run storybook"
+  },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@nestjs/cli": "^11.0.16",

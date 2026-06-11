@@ -90,17 +90,13 @@ Edit each `.env` file and fill in the required values. See the comments in each 
 git clone https://github.com/Gatheraa/Gathera.git
 cd Gathera
 
-# Install contract dependencies
-cd contract
+# Install all workspace dependencies from the repository root
 npm install
 
-# Install backend dependencies
-cd ../app/backend
-npm install
-
-# Install frontend dependencies
-cd ../frontend
-npm install
+# Optional: install dependencies per package
+cd contract && npm install
+cd ../app/backend && npm install
+cd ../frontend && npm install
 ```
 
 ### Running the Development Environment
