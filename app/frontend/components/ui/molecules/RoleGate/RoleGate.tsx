@@ -364,4 +364,3 @@ export const hasAnyPermission = (userPermissions: string[], permissions: string[
 };
 
 export { RoleGate };
-export type { RoleGateProps, Role, UserRole };

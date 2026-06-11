@@ -462,7 +462,7 @@ export function TransactionStatusTracker({
 
       {isTracking && (
         <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
-          <Spinner size="xs" tone="neutral" />
+          <Spinner size="sm" tone="neutral" />
           <span>
             {useWebSocket ? "WebSocket connected" : `Polling every ${pollingInterval / 1000}s`}
           </span>

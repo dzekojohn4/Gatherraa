@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { useInitiatePayment } from '../lib/react-query/hooks/payments/useInitiatePayment';
+import { useInitiatePayment } from '../../lib/react-query/hooks/payments/useInitiatePayment';
 import { CreditCard, Loader2 } from 'lucide-react';
 
 interface PaystackPaymentButtonProps {

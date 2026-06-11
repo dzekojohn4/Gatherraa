@@ -86,8 +86,8 @@ const ComponentDemoPage: React.FC = () => {
             <li>Session timeout is set to 2 minutes for demo purposes</li>
             <li>Warning will appear 30 seconds before timeout</li>
             <li>Move your mouse or interact with the page to extend session automatically</li>
-            <li>Click "Extend Session" button when warning appears</li>
-            <li>Session will extend automatically if you're active</li>
+            <li>Click &quot;Extend Session&quot; button when warning appears</li>
+            <li>Session will extend automatically if you&apos;re active</li>
           </ul>
         </section>
       </div>

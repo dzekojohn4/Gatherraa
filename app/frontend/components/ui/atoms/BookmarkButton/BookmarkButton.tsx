@@ -224,4 +224,3 @@ const BookmarkButton = React.forwardRef<HTMLButtonElement, BookmarkButtonProps>(
 BookmarkButton.displayName = 'BookmarkButton';
 
 export { BookmarkButton };
-export type { BookmarkButtonProps };

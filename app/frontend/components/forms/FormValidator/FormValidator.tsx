@@ -19,16 +19,16 @@ export type FormValidatorProps<T extends FieldValues> = Omit<UseFormProps<T>, 'r
    */
   resolver?: Resolver<T>;
   /** Zod schema; wired with `zodResolver`. Ignored if `resolver` is set. */
-  zodSchema?: ZodSchema<T>;
+  zodSchema?: ZodSchema;
   children: (methods: UseFormReturn<T>) => ReactNode;
 };
 
 function resolveResolver<T extends FieldValues>(
   resolver: Resolver<T> | undefined,
-  zodSchema: ZodSchema<T> | undefined
-): Resolver<T> {
+  zodSchema: ZodSchema | undefined
+): Resolver<T> | undefined {
   if (resolver) return resolver;
-  if (zodSchema) return zodResolver(zodSchema) as Resolver<T>;
+  if (zodSchema) return zodResolver(zodSchema as any) as unknown as Resolver<T>;
   throw new Error('FormValidator: pass `resolver` and/or `zodSchema` (at least one required).');
 }
 

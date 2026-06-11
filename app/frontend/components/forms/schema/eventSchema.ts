@@ -27,7 +27,7 @@ export const createEventSchema = z.object({
     .max(500, 'Description cannot exceed 500 characters'),
 
   category: z.enum(['conference', 'workshop', 'concert', 'hackathon', 'meetup'], {
-    errorMap: () => ({ message: 'Please select a category' }),
+    message: 'Please select a category',
   }),
 
   ticketPrice: z

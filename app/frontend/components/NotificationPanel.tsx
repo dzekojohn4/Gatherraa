@@ -35,19 +35,20 @@ const NotificationPanel: React.FC = () => {
           leave="transition-opacity duration-500"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          className="bg-white shadow-lg rounded-lg p-4 border border-gray-200"
         >
-          <div className="flex justify-between items-center">
-            <div>
-              <h4 className="font-bold text-gray-800">{notification.title}</h4>
-              <p className="text-gray-600 text-sm">{notification.message}</p>
+          <div className="bg-white shadow-lg rounded-lg p-4 border border-gray-200">
+            <div className="flex justify-between items-center">
+              <div>
+                <h4 className="font-bold text-gray-800">{notification.title}</h4>
+                <p className="text-gray-600 text-sm">{notification.message}</p>
+              </div>
+              <button
+                onClick={() => removeNotification(notification.id)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ×
+              </button>
             </div>
-            <button
-              onClick={() => removeNotification(notification.id)}
-              className="text-gray-400 hover:text-gray-600"
-            >
-              ×
-            </button>
           </div>
         </Transition>
       ))}

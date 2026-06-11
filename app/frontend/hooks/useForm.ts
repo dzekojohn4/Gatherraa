@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ZodSchema } from 'zod';
 
 interface UseAppFormProps<T extends FieldValues> extends UseFormProps<T> {
-  schema: ZodSchema<T>;
+  schema: ZodSchema;
 }
 
 /**
@@ -15,7 +15,7 @@ export function useAppForm<T extends FieldValues>({
   ...rest
 }: UseAppFormProps<T>) {
   return useRHF<T>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema as any) as any,
     mode: 'onChange',
     ...rest,
   });

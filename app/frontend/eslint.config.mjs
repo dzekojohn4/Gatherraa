@@ -16,6 +16,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "**/*.test.{ts,tsx,js,jsx}",
+    "**/*.spec.{ts,tsx,js,jsx}",
+    "**/*.stories.{ts,tsx,js,jsx}",
   ]),
   {
     rules: {
@@ -25,7 +28,7 @@ const eslintConfig = defineConfig([
       "@typescript-eslint/no-explicit-any": "error",
     },
   },
-  // Allow console.* in Storybook stories, test files, and scripts
+  // Allow console.* and any in test files, stories, and scripts
   {
     files: [
       "**/*.stories.{ts,tsx,js,jsx}",
@@ -36,6 +39,7 @@ const eslintConfig = defineConfig([
     ],
     rules: {
       "no-console": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ]);

@@ -146,7 +146,7 @@ export const LeaderboardView: React.FC = () => {
         {leaderboards.map((leaderboard) => (
           <Button
             key={leaderboard.id}
-            variant={selectedLeaderboard === leaderboard.id ? 'default' : 'outline'}
+            variant={selectedLeaderboard === leaderboard.id ? 'primary' : 'outline'}
             onClick={() => setSelectedLeaderboard(leaderboard.id)}
           >
             {leaderboard.name}

@@ -122,7 +122,7 @@ function NetworkBanner({
               {bannerTitle ?? "Wrong Network Detected"}
             </p>
             <p className="text-xs text-yellow-700 dark:text-yellow-400/80 mt-0.5">
-              You're on{" "}
+              You&apos;re on{" "}
               <span className="font-mono font-semibold">{currentName}</span>.{" "}
               Switch to{" "}
               <span className="font-mono font-semibold">{primaryName}</span> to

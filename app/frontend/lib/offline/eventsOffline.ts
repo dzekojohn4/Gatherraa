@@ -25,7 +25,7 @@ export async function getEventsOffline(page: number = 1, limit: number = 20): Pr
     // If offline, return cached data
     const cachedEvents = await db.events
       .where('syncStatus')
-      .not.equal('deleted')
+      .noneOf(['deleted'])
       .toArray();
     
     return {
@@ -56,8 +56,27 @@ export async function getEventOffline(id: string): Promise<OfflineEvent | null> 
 
 // Create event (offline-first)
 export async function createEventOffline(data: CreateEventDto): Promise<OfflineEvent> {
-  // Create pending event locally
-  const pendingEvent = createPendingEvent(data as Omit<Event, 'id' | 'createdAt' | 'updatedAt'>);
+  // Create pending event locally - map CreateEventDto to Event shape
+  const eventData = {
+    title: data.name,
+    description: data.description,
+    startDate: data.startTime,
+    endDate: data.endTime,
+    type: 'offline',
+    category: 'offline',
+    location: 'offline',
+    organizerId: data.organizerId,
+    organizerName: 'offline',
+    capacity: 100,
+    isFeatured: false,
+    registeredCount: 0,
+    attendanceCount: 0,
+    status: 'pending',
+    isPublic: true,
+    isDeleted: false,
+    version: 1,
+  };
+  const pendingEvent = createPendingEvent(eventData as Omit<Event, 'id' | 'createdAt' | 'updatedAt'>);
   await db.events.add(pendingEvent);
   
   // Add to sync queue
@@ -137,7 +156,7 @@ export async function deleteEventOffline(id: string): Promise<boolean> {
 
 // Get pending changes count
 export async function getPendingChangesCount(): Promise<number> {
-  return db.events.where('syncStatus').not.equal('synced').count();
+  return db.events.where('syncStatus').noneOf(['synced']).count();
 }
 
 // Get sync stats

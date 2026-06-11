@@ -51,7 +51,7 @@ export const AchievementsDashboard: React.FC = () => {
   };
 
   const getTierColor = (tier: string) => {
-    const colors = {
+    const colors: Record<string, string> = {
       bronze: 'bg-amber-100 text-amber-800 border-amber-200',
       silver: 'bg-gray-100 text-gray-800 border-gray-200',
       gold: 'bg-yellow-100 text-yellow-800 border-yellow-200',
@@ -137,44 +137,43 @@ export const AchievementsDashboard: React.FC = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-2">
-        <Button
-          variant={filter === 'all' ? 'default' : 'outline'}
+      <div className="flex flex-wrap gap-2">          <Button
+          variant={filter === 'all' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('all')}
         >
           All
         </Button>
         <Button
-          variant={filter === 'completed' ? 'default' : 'outline'}
+          variant={filter === 'completed' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('completed')}
         >
           Completed
         </Button>
         <Button
-          variant={filter === 'in_progress' ? 'default' : 'outline'}
+          variant={filter === 'in_progress' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('in_progress')}
         >
           In Progress
         </Button>
         <Button
-          variant={filter === 'learning' ? 'default' : 'outline'}
+          variant={filter === 'learning' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('learning')}
         >
           Learning
         </Button>
         <Button
-          variant={filter === 'social' ? 'default' : 'outline'}
+          variant={filter === 'social' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('social')}
         >
           Social
         </Button>
         <Button
-          variant={filter === 'events' ? 'default' : 'outline'}
+          variant={filter === 'events' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('events')}
         >
@@ -238,8 +237,7 @@ export const AchievementsDashboard: React.FC = () => {
                 </p>
               )}
 
-              <div className="mt-3 flex items-center justify-between">
-                <Badge variant="outline" className="text-xs">
+              <div className="mt-3 flex items-center justify-between">                    <Badge className="text-xs">
                   {userAchievement.achievement.category}
                 </Badge>
                 {userAchievement.status === 'completed' && (

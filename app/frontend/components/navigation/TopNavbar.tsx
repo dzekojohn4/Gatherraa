@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { WalletButton } from "@/components/wallet/WalletButton";
 import { WalletAddress } from "@/components/wallet/WalletAddress";
 import { Search, Bell, ChevronDown, X, Menu, Sparkles } from "lucide-react";
@@ -529,14 +530,14 @@ export const TopNavbar: React.FC = () => {
       >
         <nav className="nav-inner" aria-label="Main navigation">
           {/* Logo */}
-          <a href="/" className="nav-logo" aria-label="Gatheraa home">
+          <Link href="/" className="nav-logo" aria-label="Gatheraa home">
             <div className="logo-mark" aria-hidden="true">
               <Sparkles size={16} color="#0a0a0f" strokeWidth={2.5} />
             </div>
             <span className="logo-wordmark">
               Gather<span>aa</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div

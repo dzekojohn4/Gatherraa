@@ -35,10 +35,10 @@ export async function resolveWithLocal(conflictId: string): Promise<ConflictReso
   
   // Update server with local data
   const updateData: UpdateEventDto = {
-    name: localEvent.name,
+    name: localEvent.title,
     description: localEvent.description || undefined,
-    startTime: localEvent.startTime,
-    endTime: localEvent.endTime || undefined,
+    startTime: localEvent.startDate,
+    endTime: localEvent.endDate || undefined,
   };
 
   try {

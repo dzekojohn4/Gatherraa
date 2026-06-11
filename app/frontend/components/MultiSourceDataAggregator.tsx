@@ -138,9 +138,9 @@ const MultiSourceDataAggregator: React.FC<MultiSourceDataAggregatorProps> = ({
     });
 
     const results = await Promise.allSettled(promises);
-    const newAggregatedData = results.map((result, index) => {
+    const newAggregatedData: AggregatedData[] = results.map((result, index) => {
       if (result.status === 'fulfilled') {
-        return result.value;
+        return result.value as AggregatedData;
       }
       return {
         sourceId: dataSources[index].id,

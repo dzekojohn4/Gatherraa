@@ -82,7 +82,6 @@ export function FormField({
           color="primary"
           id={errorId}
           className="text-[var(--color-error)]"
-          role="alert"
         >
           {error}
         </Text>

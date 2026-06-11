@@ -46,15 +46,12 @@ export default function RootLayout({
         <OfflineProvider>
           <WalletProvider>
             <ReactQueryProvider>
-              {children}
+              <RoleProvider>
+                {children}
+                <FloatingActionButton />
+              </RoleProvider>
             </ReactQueryProvider>
           </WalletProvider>
-          <RoleProvider>
-            <WalletProvider>
-              {children}
-              <FloatingActionButton />
-            </WalletProvider>
-          </RoleProvider>
         </OfflineProvider>
       </body>
     </html>

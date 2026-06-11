@@ -119,7 +119,7 @@ export const ChallengesView: React.FC = () => {
   };
 
   const getDifficultyColor = (difficulty: string) => {
-    const colors = {
+    const colors: Record<string, string> = {
       tutorial: 'bg-green-100 text-green-800 border-green-200',
       easy: 'bg-blue-100 text-blue-800 border-blue-200',
       medium: 'bg-yellow-100 text-yellow-800 border-yellow-200',
@@ -147,7 +147,7 @@ export const ChallengesView: React.FC = () => {
   };
 
   const getStatusColor = (status: string) => {
-    const colors = {
+    const colors: Record<string, string> = {
       not_started: 'bg-gray-100 text-gray-800',
       in_progress: 'bg-blue-100 text-blue-800',
       completed: 'bg-green-100 text-green-800',
@@ -247,42 +247,42 @@ export const ChallengesView: React.FC = () => {
       {/* Filters */}
       <div className="flex flex-wrap gap-2">
         <Button
-          variant={filter === 'all' ? 'default' : 'outline'}
+          variant={filter === 'all' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('all')}
         >
           All Challenges
         </Button>
         <Button
-          variant={filter === 'enrolled' ? 'default' : 'outline'}
+          variant={filter === 'enrolled' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('enrolled')}
         >
           Enrolled
         </Button>
         <Button
-          variant={filter === 'completed' ? 'default' : 'outline'}
+          variant={filter === 'completed' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('completed')}
         >
           Completed
         </Button>
         <Button
-          variant={filter === 'individual' ? 'default' : 'outline'}
+          variant={filter === 'individual' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('individual')}
         >
           Individual
         </Button>
         <Button
-          variant={filter === 'team' ? 'default' : 'outline'}
+          variant={filter === 'team' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('team')}
         >
           Team
         </Button>
         <Button
-          variant={filter === 'guild' ? 'default' : 'outline'}
+          variant={filter === 'guild' ? 'primary' : 'outline'}
           size="sm"
           onClick={() => setFilter('guild')}
         >

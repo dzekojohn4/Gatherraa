@@ -24,6 +24,8 @@ export interface SearchInputProps extends Omit<React.InputHTMLAttributes<HTMLInp
   minChars?: number;
   /** Enable search on enter key */
   searchOnEnter?: boolean;
+  /** Callback fired on input change */
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
@@ -49,15 +51,15 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     },
     ref
   ) => {
-    const [value, setValue] = useState(controlledValue ?? defaultValue ?? '');
+    const [value, setValue] = useState<string>(String(controlledValue ?? defaultValue ?? ''));
     const [isFocused, setIsFocused] = useState(false);
-    const timeoutRef = useRef<NodeJS.Timeout>();
+    const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
     const inputRef = useRef<HTMLInputElement>(null);
 
     // Sync with controlled value
     useEffect(() => {
       if (controlledValue !== undefined) {
-        setValue(controlledValue);
+        setValue(String(controlledValue));
       }
     }, [controlledValue]);
 
@@ -88,7 +90,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       debouncedSearch(newValue);
       
       // Call original onChange if provided
-      onChange?.(event);
+      (onChange as React.ChangeEventHandler<HTMLInputElement> | undefined)?.(event);
     };
 
     // Handle key down
@@ -243,4 +245,3 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 SearchInput.displayName = 'SearchInput';
 
 export { SearchInput };
-export type { SearchInputProps };

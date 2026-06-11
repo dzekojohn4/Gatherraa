@@ -92,7 +92,7 @@ export const InteractiveReaction = forwardRef<HTMLButtonElement, InteractiveReac
     const [displayCount, setDisplayCount] = useState(count);
     const [isAnimating, setIsAnimating] = useState(false);
     const prevCountRef = useRef(count);
-    const animationTimeoutRef = useRef<number>();
+    const animationTimeoutRef = useRef<number | undefined>(undefined);
 
     useEffect(() => {
       if (count !== prevCountRef.current) {

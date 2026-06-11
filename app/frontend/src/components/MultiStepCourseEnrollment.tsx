@@ -197,8 +197,8 @@ const PersonalInfoStep: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="123 Main Street"
             />
-            {errors.address?.street && (
-              <p className="text-red-500 text-sm mt-1">{errors.address.street.message as string}</p>
+            {(errors.address as any)?.street && (
+              <p className="text-red-500 text-sm mt-1">{(errors.address as any).street.message as string}</p>
             )}
           </div>
 
@@ -212,8 +212,8 @@ const PersonalInfoStep: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="New York"
             />
-            {errors.address?.city && (
-              <p className="text-red-500 text-sm mt-1">{errors.address.city.message as string}</p>
+            {(errors.address as any)?.city && (
+              <p className="text-red-500 text-sm mt-1">{(errors.address as any).city.message as string}</p>
             )}
           </div>
 
@@ -227,8 +227,8 @@ const PersonalInfoStep: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="NY"
             />
-            {errors.address?.state && (
-              <p className="text-red-500 text-sm mt-1">{errors.address.state.message as string}</p>
+            {(errors.address as any)?.state && (
+              <p className="text-red-500 text-sm mt-1">{(errors.address as any).state.message as string}</p>
             )}
           </div>
 
@@ -242,8 +242,8 @@ const PersonalInfoStep: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="10001"
             />
-            {errors.address?.zipCode && (
-              <p className="text-red-500 text-sm mt-1">{errors.address.zipCode.message as string}</p>
+            {(errors.address as any)?.zipCode && (
+              <p className="text-red-500 text-sm mt-1">{(errors.address as any).zipCode.message as string}</p>
             )}
           </div>
 
@@ -257,8 +257,8 @@ const PersonalInfoStep: React.FC = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="United States"
             />
-            {errors.address?.country && (
-              <p className="text-red-500 text-sm mt-1">{errors.address.country.message as string}</p>
+            {(errors.address as any)?.country && (
+              <p className="text-red-500 text-sm mt-1">{(errors.address as any).country.message as string}</p>
             )}
           </div>
         </div>
@@ -519,9 +519,9 @@ const ConfirmationStep: React.FC = () => {
             Address
           </h4>
           <div className="text-sm">
-            <p>{formData.address.street}</p>
-            <p>{formData.address.city}, {formData.address.state} {formData.address.zipCode}</p>
-            <p>{formData.address.country}</p>
+            <p>{(formData.address as any)?.street}</p>
+            <p>{(formData.address as any)?.city}, {(formData.address as any)?.state} {(formData.address as any)?.zipCode}</p>
+            <p>{(formData.address as any)?.country}</p>
           </div>
         </div>
 
@@ -531,9 +531,9 @@ const ConfirmationStep: React.FC = () => {
             Payment Method
           </h4>
           <div className="text-sm">
-            <p className="capitalize">{formData.paymentMethod?.replace('-', ' ')}</p>
-            {formData.paymentMethod === 'credit-card' && (
-              <p className="text-gray-600">Card ending in ****{formData.cardNumber?.slice(-4)}</p>
+            <p className="capitalize">{(formData.paymentMethod as string)?.replace('-', ' ')}</p>
+            {(formData.paymentMethod as string) === 'credit-card' && (
+              <p className="text-gray-600">Card ending in ****{(formData.cardNumber as string)?.slice(-4)}</p>
             )}
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info';
+export type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info' | 'outline';
 
 export interface BadgeProps {
   variant?: BadgeVariant;
@@ -23,6 +23,8 @@ const variantClasses: Record<BadgeVariant, string> = {
     'bg-[var(--color-error-muted)] text-[var(--color-error-muted-foreground)] dark:bg-[var(--color-error-muted)] dark:text-[var(--color-error-muted-foreground)]',
   info:
     'bg-[var(--color-info-muted)] text-[var(--color-info-muted-foreground)] dark:bg-[var(--color-info-muted)] dark:text-[var(--color-info-muted-foreground)]',
+  outline:
+    'border border-[var(--border-default)] text-[var(--text-secondary)] bg-transparent',
 };
 
 export function Badge({

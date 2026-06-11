@@ -8,7 +8,7 @@ type TextColor = 'primary' | 'secondary' | 'muted' | 'inverse';
 export interface TextProps {
   variant?: TextVariant;
   color?: TextColor;
-  as?: 'p' | 'span' | 'div' | 'label' | 'h1' | 'h2' | 'h3';
+  as?: 'p' | 'span' | 'div' | 'label' | 'h1' | 'h2' | 'h3' | 'h4';
   children: React.ReactNode;
   className?: string;
   id?: string;

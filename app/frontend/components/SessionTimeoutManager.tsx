@@ -37,8 +37,8 @@ const SessionTimeoutManager: React.FC<SessionTimeoutManagerProps> = ({
   const [isExpired, setIsExpired] = useState(false);
   const [lastActivity, setLastActivity] = useState(Date.now());
   
-  const intervalRef = useRef<number | null>(null);
-  const warningTimeoutRef = useRef<number | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const warningTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activityEventsRef = useRef<ActivityEvent[]>([]);
 
   // Format time for display

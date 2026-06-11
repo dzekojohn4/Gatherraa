@@ -44,9 +44,7 @@ const createEventSchema = z.object({
   maxAttendees: z
     .string()
     .refine(v => !isNaN(Number(v)) && Number(v) >= 1 && Number.isInteger(Number(v)), 'Must be a whole number ≥ 1'),
-  category: z.enum(['conference', 'workshop', 'concert', 'hackathon', 'meetup', ''], {
-    errorMap: () => ({ message: 'Please select a category' }),
-  }).refine(v => v !== '', { message: 'Please select a category' }),
+  category: z.enum(['conference', 'workshop', 'concert', 'hackathon', 'meetup', '']).refine(v => v !== '', { message: 'Please select a category' }),
   tags: z
     .array(z.string().trim().min(1).max(20, 'Tag cannot exceed 20 characters'))
     .max(10, 'You can add up to 10 tags')
@@ -118,14 +116,14 @@ export default function CreateEventForm() {
     formState: { errors, isSubmitting, touchedFields, isSubmitSuccessful, dirtyFields },
     reset,
   } = useForm<CreateEventFormValues>({
-    resolver: zodResolver(createEventSchema),
+    resolver: zodResolver(createEventSchema) as any,
     defaultValues: {
       title: '',
       description: '',
       contractAddress: '',
       ticketPrice: '0',
       maxAttendees: '100',
-      category: '',
+      category: '' as any,
       tags: [],
       isPublic: true,
       websiteUrl: '',

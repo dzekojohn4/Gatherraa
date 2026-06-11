@@ -177,7 +177,7 @@ export function OfflineBanner() {
         <WifiOff className="w-5 h-5 text-red-500" />
         <div className="flex-1">
           <h4 className="text-sm font-semibold text-red-800 dark:text-red-200">
-            You're offline
+            You&apos;re offline
           </h4>
           <p className="text-sm text-red-700 dark:text-red-300">
             Changes will be saved locally and synced when you reconnect.
