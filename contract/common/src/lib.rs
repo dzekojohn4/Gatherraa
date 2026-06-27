@@ -1,7 +1,7 @@
 //! Gathera common utilities
 //! Minimal stub — full implementation pending Soroban SDK migration
 
-use soroban_sdk::{Address, Symbol, String, Env};
+use soroban_sdk::{contracterror, Address, Symbol, String, Env};
 
 /// Common status enumeration
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -22,16 +22,29 @@ pub enum SortDirection {
     Descending = 1,
 }
 
-/// Common error types
-#[derive(Debug, Clone, PartialEq, Eq)]
+/// Common error types for Soroban contracts.
+///
+/// Annotated with `#[contracterror]` so downstream contracts can use these
+/// variants directly in their `Result<T, CommonError>` return types.
+/// Discriminant values are stable and must not be renumbered.
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+#[repr(u32)]
 pub enum CommonError {
-    InvalidInput,
-    Unauthorized,
-    NotFound,
-    AlreadyExists,
-    InternalError,
-    RateLimited,
-    Maintenance,
+    /// Input arguments are missing or out of range (code 1).
+    InvalidInput  = 1,
+    /// Caller does not have the required permission (code 2).
+    Unauthorized  = 2,
+    /// Requested resource does not exist (code 3).
+    NotFound      = 3,
+    /// Resource already exists and cannot be created again (code 4).
+    AlreadyExists = 4,
+    /// Unexpected internal failure (code 5).
+    InternalError = 5,
+    /// Caller has exceeded their allowed request rate (code 6).
+    RateLimited   = 6,
+    /// Contract is temporarily under maintenance (code 7).
+    Maintenance   = 7,
 }
 
 /// Common result type for contract operations
@@ -90,11 +103,11 @@ pub mod gas_testing {
     }
 }
 
-/// Errors module — stub
+/// Errors module — backward-compatible numeric codes that mirror CommonError discriminants.
 pub mod errors {
     pub mod error_codes {
-        pub const INVALID_INPUT: u32 = 1000;
-        pub const UNAUTHORIZED: u32 = 1001;
-        pub const NOT_FOUND: u32 = 1002;
+        pub const INVALID_INPUT: u32 = 1;
+        pub const UNAUTHORIZED: u32 = 2;
+        pub const NOT_FOUND: u32 = 3;
     }
 }
